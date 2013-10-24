@@ -5,7 +5,7 @@
         private $_default_embed_code = "EMBED_CODE";
         private $_default_player_id = "PLAYER_ID";
         private $_google_ima_player_id = "IMA_PLAYER_ID";
-        private $_sample_email = "alice@example.com";
+        private $_sample_email = "alice@ooyala.com";
 
         function __construct() {
             parent::__construct();
@@ -14,20 +14,21 @@
         }
 
         public function index(){
-            echo "string";
+            // Just the barebones to know that everything works OK
+            // with CodeIgniter and the API
+            echo "It works";
+            echo "</br>";
             $this->_api_wrapper->test();
         }
 
         public function example_one(){
-            // Main thing missing: Google Analytics
-
             $data['uses_google_ima'] = true;
             $data['player_id'] = $this->_google_ima_player_id;
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
             $data['adTagUrl'] = "AdTag";
             $user_id = $this->_sample_email;
-            $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code);
+            $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code, $user_id);
             $data['embed_token_url'] = $embed_token_url;
             $playhead_time =  $this->_api_wrapper->get_playhead_time($embed_code, $user_id);
             $data['playhead_time'] = $playhead_time;
@@ -40,7 +41,7 @@
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
             $user_id = $this->_sample_email;
-            $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code);
+            $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code, $user_id);
             $data['embed_token_url'] = $embed_token_url;
             $playhead_time =  $this->_api_wrapper->get_playhead_time($embed_code, $user_id);
             $data['playhead_time'] = $playhead_time;
@@ -67,8 +68,8 @@
             $data['player_id'] = $this->_google_ima_player_id;
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
-            $data['adTagUrl'] = "adTag";
-            $this->load->view('google_ima');
+            $data['adTagUrl'] = "AdTag";
+            $this->load->view('google_ima', $data);
         }
 
     }

@@ -31,13 +31,14 @@ class Ooyala{
         $request = "http://player.ooyala.com/sas/embed_token/";
         $request .= $this->_p_code . "/";
         $request .= $embed_code;
-        if (!is_null($user_id)){
-             $query_params['account_id'] = $this->encode_user_id($user_id);
-        }
         $query_params['api_key'] = $this->_api_key;
-        $query_params['expires'] = time() + 600;
+        $query_params['expires'] = time() + 605;
+        if (!is_null($user_id)){
+            $query_params['account_id'] = urlencode($user_id);
+        }
         $signature = $this->_api->generateSignature('', $request, $query_params);
         $query_params['signature'] = $signature;
+
         $url = $this->buildURL($request, $query_params);
         return $url;
     }
@@ -45,7 +46,7 @@ class Ooyala{
     public function get_playhead_time($embed_code, $user_id = null){
          // http://_api.ooyala.com/v2/cross_device_resume/accounts/account_id/viewed_assets/embed_code(identifier for the asset)/playhead_info
         $request = "cross_device_resume/accounts";
-        $request .= "/" . urlencode($this->encode_user_id($user_id));
+        $request .= "/" . urlencode($user_id);
         $request .= "/" . "viewed_assets";
         $request .= "/" . $embed_code;
         $request .= "/" . "playhead_info";
@@ -53,13 +54,11 @@ class Ooyala{
             // The SDK already appends the signature, expires and relevant parameters
             $response = $this->_api->get($request);
         } catch (OoyalaRequestErrorException $e) {
+            // echo $e;
             // This could give a 404 if the user hasn't seen the embed_code
             return 0;
         }
-        if ($response['status'] != 200){
-            return 0;
-        }
-        return $response['body']['playhead_seconds'];
+        return $response->playhead_seconds;
     }
 
     // Helper functions
