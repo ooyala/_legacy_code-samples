@@ -9,8 +9,14 @@
 
         function __construct() {
             parent::__construct();
+            $this->config->load('ooyala_config');
             $this->load->library("ooyala");
+            $this->_default_embed_code = $config['default_embed_code'];
+            $this->_default_player_id = $config['default_player_id'];
+            $this->_google_ima_player_id = $config['google_ima_player_id'];
+            $this->_sample_email = $config['sample_email'];
             $this->_api_wrapper = new Ooyala();
+
         }
 
         public function index(){

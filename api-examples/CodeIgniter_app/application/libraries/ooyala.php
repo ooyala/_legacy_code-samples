@@ -4,16 +4,20 @@ require_once('application/third_party/php-v2-sdk/OoyalaApi.php');
 class Ooyala{
 
     private $_api;
-    private $_api_key = "YOUR KEY";
-    private $_api_secret = "YOUR SECRET";
-    private $_p_code = "YOUR P_CODE";
+    private $_api_key;
+    private $_api_secret;
+    private $_p_code;
 
     // Helper class included in Ooyala PHP SDK
     private $http_client;
 
     function __construct() {
+        $this->config->load('ooyala_config');
         $this->_api = new OoyalaApi($this->_api_key, $this->_api_secret);
         $this->http_client = new OoyalaHttpRequest();
+        $this->_api_key = $config['api_key'];
+        $this->_api_secret = $config['api_secret'];
+        $this->_p_code = $config['p_code'];
     }
 
     public function test(){
@@ -54,7 +58,6 @@ class Ooyala{
             // The SDK already appends the signature, expires and relevant parameters
             $response = $this->_api->get($request);
         } catch (OoyalaRequestErrorException $e) {
-            // echo $e;
             // This could give a 404 if the user hasn't seen the embed_code
             return 0;
         }
