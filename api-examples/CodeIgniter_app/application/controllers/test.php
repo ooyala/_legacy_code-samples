@@ -17,6 +17,7 @@
             $this->CI->load->config('ooyala_config');
             // We load Ooyala wrapper
             $this->load->library('ooyala');
+            $this->load->helper('url');
             $this->_default_embed_code = $this->CI->config->item('default_embed_code');
             $this->_default_player_id = $this->CI->config->item('default_player_id');
             $this->_google_ima_player_id = $this->CI->config->item('google_ima_player_id');
@@ -71,6 +72,12 @@
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
             $this->load->view('message-bus', $data);
+        }
+
+        public function message_bus_advanced(){
+            $data['embed_code'] = $this->_default_embed_code;
+            $data['player_id'] = $this->_default_player_id;
+            $this->load->view('message-bus-advanced', $data);
         }
 
         public function token(){
