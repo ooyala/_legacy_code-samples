@@ -67,6 +67,12 @@
             $this->load->view('simple', $data);
         }
 
+        public function message_bus(){
+            $data['embed_code'] = $this->_default_embed_code;
+            $data['player_id'] = $this->_default_player_id;
+            $this->load->view('message-bus', $data);
+        }
+
         public function token(){
             $data['player_id'] = $this->_default_player_id;
             $embed_code = $this->_default_embed_code;
