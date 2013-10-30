@@ -7,6 +7,7 @@
      <h1>Example one</h1>
      <p>Google IMA, playerToken and cross-resume</p>
      <div id='playerwrapper' style='width:920px;height:400px;'></div>
+     <div id="logName"><textarea id="textLog" style="width:640px; height:300px;">Log file:</textarea></div>
      <script>
          var playheadTime = <?php if($playhead_time) {echo $playhead_time;} else echo '0';?>;
          var videoPlayer =
@@ -28,6 +29,8 @@
 
             initialTime: playheadTime
         });
+        this.mb = videoPlayer.mb;
       </script>
+      <script src="<?php echo base_url();?>/application/assets/javascript/milestones_with_ads.js"></script>
   </body>
 </html>

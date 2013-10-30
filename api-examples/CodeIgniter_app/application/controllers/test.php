@@ -6,6 +6,7 @@
         private $_default_player_id;
         private $_google_ima_player_id;
         private $_sample_email;
+        private $_google_ima_ad_tag;
 
         // Reference to the CodeIgniter app
         protected $CI;
@@ -22,6 +23,7 @@
             $this->_default_player_id = $this->CI->config->item('default_player_id');
             $this->_google_ima_player_id = $this->CI->config->item('google_ima_player_id');
             $this->_sample_email = $this->CI->config->item('sample_email');
+            $this->_google_ima_ad_tag = $this->CI->config->item('google_ima_ad_tag');
             $this->_api_wrapper = new Ooyala();
 
         }
@@ -39,7 +41,7 @@
             $data['player_id'] = $this->_google_ima_player_id;
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
-            $data['adTagUrl'] = "AdTag";
+            $data['adTagUrl'] = $this->_google_ima_ad_tag;
             $user_id = $this->_sample_email;
             $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code, $user_id);
             $data['embed_token_url'] = $embed_token_url;
@@ -93,7 +95,7 @@
             $data['player_id'] = $this->_google_ima_player_id;
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
-            $data['adTagUrl'] = "AdTag";
+            $data['adTagUrl'] = $this->_google_ima_ad_tag;
             $this->load->view('google_ima', $data);
         }
 
