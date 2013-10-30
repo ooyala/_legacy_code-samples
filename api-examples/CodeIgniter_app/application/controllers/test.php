@@ -2,19 +2,25 @@
     class Test extends CI_Controller{
 
         private $_api_wrapper;
-        private $_default_embed_code = "EMBED_CODE";
-        private $_default_player_id = "PLAYER_ID";
-        private $_google_ima_player_id = "IMA_PLAYER_ID";
-        private $_sample_email = "alice@ooyala.com";
+        private $_default_embed_code;
+        private $_default_player_id;
+        private $_google_ima_player_id;
+        private $_sample_email;
+
+        // Reference to the CodeIgniter app
+        protected $CI;
 
         function __construct() {
             parent::__construct();
-            $this->config->load('ooyala_config');
-            $this->load->library("ooyala");
-            $this->_default_embed_code = $config['default_embed_code'];
-            $this->_default_player_id = $config['default_player_id'];
-            $this->_google_ima_player_id = $config['google_ima_player_id'];
-            $this->_sample_email = $config['sample_email'];
+            // We load the configuration file
+            $this->CI =& get_instance();
+            $this->CI->load->config('ooyala_config');
+            // We load Ooyala wrapper
+            $this->load->library('ooyala');
+            $this->_default_embed_code = $this->CI->config->item('default_embed_code');
+            $this->_default_player_id = $this->CI->config->item('default_player_id');
+            $this->_google_ima_player_id = $this->CI->config->item('google_ima_player_id');
+            $this->_sample_email = $this->CI->config->item('sample_email');
             $this->_api_wrapper = new Ooyala();
 
         }

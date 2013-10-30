@@ -8,16 +8,22 @@ class Ooyala{
     private $_api_secret;
     private $_p_code;
 
+    // Reference to the CodeIgniter app
+    protected $CI;
+
     // Helper class included in Ooyala PHP SDK
     private $http_client;
 
     function __construct() {
-        $this->config->load('ooyala_config');
+        // We load the configuration file
+        $this->CI =& get_instance();
+        $this->CI->load->config('ooyala_config');
+        // Then we get each item. This is CodeIgniter specific
+        $this->_api_key = $this->CI->config->item('api_key');
+        $this->_api_secret = $this->CI->config->item('api_secret');
+        $this->_p_code = $this->CI->config->item('p_code');
         $this->_api = new OoyalaApi($this->_api_key, $this->_api_secret);
         $this->http_client = new OoyalaHttpRequest();
-        $this->_api_key = $config['api_key'];
-        $this->_api_secret = $config['api_secret'];
-        $this->_p_code = $config['p_code'];
     }
 
     public function test(){
