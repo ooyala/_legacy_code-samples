@@ -5,7 +5,7 @@
   </head>
   <body>
      <h1>Example one</h1>
-     <p>Google IMA, playerToken, cross-resume and Google analytics</p>
+     <p>Google IMA, playerToken and cross-resume</p>
      <div id='playerwrapper' style='width:920px;height:400px;'></div>
      <script>
          var playheadTime = <?php if($playhead_time) {echo $playhead_time;} else echo '0';?>;
