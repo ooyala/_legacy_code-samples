@@ -31,12 +31,12 @@ http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
  ```
  Currently, this example has the following routes
 
- | Route                        | Info                                  |
- | ---------------------------- | ------------------------------------- |
- | Test/cross_resume            | Cross-device cross_resume             |
- | Test/simple                  | Barebones player                      |
- | Test/message_bus             | Simple message bus handling           |
- | Test/message_bus_advanced    | Milestones with message bus           |
- | Test/token                   | An example with playerToken           |
- | Test/google_ima              | Player with Google IMA enabled        |
- | Test/example_one             | An example that has all of the above  |
+| Route                     | Info                                  |
+|---------------------------|---------------------------------------|
+| Test/cross_resume         | Cross device resume                   |
+| Test/simple               | Barebones player                      |
+| Test/message_bus          | Simple message bus handling           |
+| Test/message_bus_advanced | Milestones with message bus           |
+| Test/token                | An example with playerToken           |
+| Test/google_ima           | Player with Google IMA enabled        |
+| Test/example_one          | An example that has all of the above  |
