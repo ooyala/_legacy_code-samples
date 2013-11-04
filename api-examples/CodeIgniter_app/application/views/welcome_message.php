@@ -75,7 +75,7 @@
 			to configure your api key, api secret and else at application/config/ooyala_config.php</p>
 
 		<p>For example number one, please hit</p>
-		<code>{this_url}/index.php/Atlas</code>
+		<code><a href="<?php echo base_url(); ?>index.php/Atlas"><?php echo base_url(); ?>index.php/Atlas</a></code>
 
 		<p>The available routes are:</p>
 		<code>/Atlas</code>
