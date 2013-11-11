@@ -1,4 +1,4 @@
-this.mb = window.mb;
+this.videoPlayer = window.videoPlayer;
 
 var playerIsFlash = false;
 
@@ -18,7 +18,7 @@ var _50milestone;
 var _75milestone;
 
 
-this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, arg1, arg2) {
+this.videoPlayer.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, arg1, arg2) {
   playerIsFlash = isFlash();
   if (playerIsFlash){
     // Flash reports events in seconds
@@ -34,7 +34,7 @@ this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, 
   _75milestone = 3 * (videoLength / 4);
 });
 
-this.mb.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
+this.videoPlayer.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
   if (videoEnded){
     // Reset all values
     // We are asuming we hit replay on the same video
@@ -52,7 +52,7 @@ this.mb.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
   }
 });
 
-this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName, currentTime) {
+this.videoPlayer.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName, currentTime) {
   // We check from first to last to account for scrubbing
   if (currentTime > _75milestone && !_75per){
     _25per = true;
@@ -71,7 +71,7 @@ this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName,
   }
 });
 
-this.mb.subscribe(OO.EVENTS.PLAYED, "func4", function (eventName){
+this.videoPlayer.subscribe(OO.EVENTS.PLAYED, "func4", function (eventName){
   videoEnded = true;
   write("Video endeded");
 });
