@@ -19,7 +19,7 @@ The relevant files are structured in the following way:
 ## How to get it running
 1. You need to have a server running that can interpret PHP, like Apache or Nginx.
 2. Clone this repository in your server
-3. Hit your local path like this "your_base_path/code-samples/api-examples/CodeIgniter_app/index.php"
+3. The path for the example would be "your_base_path/code-samples/api-examples/CodeIgniter_app/index.php". So, if you are running this from your localhost, you will have a URL like "localhost/code-samples/api-examples/CodeIgniter_app/index.php"
 4. In order to get more than the welcome page, you need to modify the values in application/config/ooyala_config.php. There you will be asked for you API key, secret, embed code and some other stuff. For more information about this you can check [our documentation](http://support.ooyala.com/developers/documentation/concepts/api_keys.html)
 
 For more information about CodeIgniter installation you can check [their webpage](http://ellislab.com/codeigniter/user-guide/installation/)
