@@ -1,4 +1,4 @@
-this.videoPlayer = window.videoPlayer;
+this.mb = window.mb;
 
 var playerIsFlash = false;
 
@@ -16,21 +16,21 @@ var _75milestone;
 
 var isAdPlaying = false;
 
-this.videoPlayer.subscribe(OO.EVENTS.PLAYBACK_READY, "func0", function (eventName){
+this.mb.subscribe(OO.EVENTS.PLAYBACK_READY, "func0", function (eventName){
   playerIsFlash = isFlash();
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.WILL_PLAY_ADS, "A", function(eventName){
+this.mb.subscribe(OO.EVENTS.WILL_PLAY_ADS, "A", function(eventName){
   write("An ad will be played");
   isAdPlaying = true;
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.ADS_PLAYED, "B", function(eventName){
+this.mb.subscribe(OO.EVENTS.ADS_PLAYED, "B", function(eventName){
   write("Ads finished");
   isAdPlaying = false;
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, arg1, arg2) {
+this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, arg1, arg2) {
   console.log(eventName, arg1, arg2);
   if (playerIsFlash){
     videoLength = arg1.time;
@@ -45,7 +45,7 @@ this.videoPlayer.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (ev
   _75milestone = 3 * (videoLength / 4);
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
+this.mb.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
   if (isAdPlaying){
     // Ignore the event if it's not the main video
     return;
@@ -67,7 +67,7 @@ this.videoPlayer.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1
   }
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName, currentTime) {
+this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName, currentTime) {
   // We check from first to last to account for scrubbing
   if (isAdPlaying){
     // Ignore the event if it's not the main video
@@ -90,7 +90,7 @@ this.videoPlayer.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (e
   }
 });
 
-this.videoPlayer.subscribe(OO.EVENTS.PLAYED, "func4", function (eventName){
+this.mb.subscribe(OO.EVENTS.PLAYED, "func4", function (eventName){
   videoEnded = true;
   write("Video endeded");
 });
