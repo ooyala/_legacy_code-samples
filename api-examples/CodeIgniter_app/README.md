@@ -33,10 +33,10 @@ http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
 
 | Route                     | Info                                  |
 |---------------------------|---------------------------------------|
-| Test/cross_resume         | Cross device resume                   |
-| Test/simple               | Barebones player                      |
-| Test/message_bus          | Simple message bus handling           |
-| Test/message_bus_advanced | Milestones with message bus           |
-| Test/token                | An example with playerToken           |
-| Test/google_ima           | Player with Google IMA enabled        |
-| Test/example_one          | An example that has all of the above  |
+| Atlas/cross_resume         | Cross device resume                   |
+| Atlas/simple               | Barebones player                      |
+| Atlas/message_bus          | Simple message bus handling           |
+| Atlas/message_bus_advanced | Milestones with message bus           |
+| Atlas/token                | An example with playerToken           |
+| Atlas/google_ima           | Player with Google IMA enabled        |
+| Atlas/example_one          | An example that has all of the above  |
