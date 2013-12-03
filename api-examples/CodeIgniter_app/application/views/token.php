@@ -4,7 +4,7 @@
    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
    <title>PlayerV3 Demo</title>
    <meta name="viewport" content="width=device-width" />
-   <script src='http://player.ooyala.com/v3/<?php echo $player_id; ?>?platform=flash-priority&debug=true'></script>
+   <script src='http://player.ooyala.com/v3/<?php echo $player_id; ?>?platform=flash&debug=true'></script>
 </head>
 
 <body>
