@@ -36,7 +36,7 @@
             $this->_api_wrapper->test();
         }
 
-        public function example_one(){
+        public function multi_feature(){
             $data['uses_google_ima'] = true;
             $data['player_id'] = $this->_google_ima_player_id;
             $embed_code = $this->_default_embed_code;
