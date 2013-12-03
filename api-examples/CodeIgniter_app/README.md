@@ -39,4 +39,4 @@ http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
 | Atlas/message_bus_advanced | Milestones with message bus           |
 | Atlas/token                | An example with playerToken           |
 | Atlas/google_ima           | Player with Google IMA enabled        |
-| Atlas/example_one          | An example that has all of the above  |
+| Atlas/multi_feature        | An example that has all of the above  |
