@@ -47,7 +47,7 @@
             $data['embed_token_url'] = $embed_token_url;
             $playhead_time =  $this->_api_wrapper->get_playhead_time($embed_code, $user_id);
             $data['playhead_time'] = $playhead_time;
-            $this->load->view('example-one', $data);
+            $this->load->view('multi-feature', $data);
         }
 
 
