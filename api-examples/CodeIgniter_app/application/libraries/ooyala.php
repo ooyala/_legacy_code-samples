@@ -70,6 +70,21 @@ class Ooyala{
         return $response->playhead_seconds;
     }
 
+    public function get_related_videos($embed_code){
+        $parameters = array("limit" => "5");
+        $results = $this->_api->get("discover/similar/assets/", $parameters);
+        return $results;
+    }
+
+    public function get_trending_videos(){
+        $parameters = array('countries' => 'all',
+                            'time' => 'now',
+                            'window' => 'day',
+                            "limit" => 5 );
+        $results = $this->_api->get("discover/trending/top", $parameters);
+        return $results;
+    }
+
     // Helper functions
 
     private function encode_user_id($user_id){
