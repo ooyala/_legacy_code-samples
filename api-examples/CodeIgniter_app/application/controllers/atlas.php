@@ -31,9 +31,8 @@
         public function index(){
             // Just the barebones to know that everything works OK
             // with CodeIgniter and the API
-            echo "It works";
-            echo "</br>";
-            $this->_api_wrapper->test();
+            $data['assets'] = $this->_api_wrapper->test();
+            $this->load->view('test', $data);
         }
 
         public function multi_feature(){

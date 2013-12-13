@@ -31,10 +31,7 @@ class Ooyala{
         $parameters = array("where" => "labels INCLUDES 'Funny dogs'");
         $results = $this->_api->get("assets", $parameters);
         $assets = $results->items;
-        echo "Printing assets in the 'Funny dogs' label...";
-        foreach($assets as $asset) {
-            echo $asset->embed_code . " - " . $asset->name . "\n";
-        }
+        return $assets;
     }
 
     public function get_embed_token($embed_code, $user_id = null){
