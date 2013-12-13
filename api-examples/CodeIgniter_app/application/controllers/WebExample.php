@@ -36,6 +36,18 @@
             $this->load->view('web-example', $data);
         }
 
+        public function mobile(){
+            $data['embed_code'] = $this->_default_embed_code;
+            $data['player_id'] = $this->_default_player_id;
+            // This will be abstracted in an API
+            $result = $this->_api_wrapper->get_related_videos($this->_default_embed_code);
+            $result = $result->results;
+
+            // Pass related videos as json to use in the view later
+            $data['related_videos'] = json_encode($result);
+            $this->load->view('web-example-mobile', $data);
+        }
+
 
     }
 ?>
