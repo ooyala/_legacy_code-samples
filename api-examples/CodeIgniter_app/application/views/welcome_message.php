@@ -78,7 +78,15 @@
 		<code><a href="<?php echo base_url(); ?>index.php/Atlas"><?php echo base_url(); ?>index.php/Atlas</a></code>
 
 		<p>The available routes are:</p>
-		<code>/Atlas</code>
+		<code>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/simple">/Atlas/simple</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus">/Atlas/message_bus</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus_advanced">/Atlas/message_bus_advanced</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/cross_resume">/Atlas/cross_resume</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/google_ima">/Atlas/google_ima</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/multi_feature">/Atlas/multi_feature</a>
+
+		</code>
 
 		<p>If you like, you can also check our documentation at our <a href="http://support.ooyala.com/developers//">support center</a>.</p>
 	</div>
