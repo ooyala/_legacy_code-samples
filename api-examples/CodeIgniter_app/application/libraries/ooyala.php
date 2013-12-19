@@ -82,6 +82,21 @@ class Ooyala{
         return $results;
     }
 
+    public function get_twitter_card_info($player_id, $content_id){
+        // The request URL is of the form
+        // http://player.ooyala.com/twitter/meta/player_id/content_id
+        $requestPath = "http://player.ooyala.com/twitter/meta";
+        $requestPath .= "/" .$player_id;
+        $requestPath .= "/" .$content_id;
+        $result = $this->generic_get_request($requestPath);
+        $twitter_user = $this->CI->config->item('twitter_user');
+        $result .= "\n" . "<meta name=\"twitter:site\" content=\"@" .
+                urlencode($twitter_user) . "\">" . "\n";
+        return $result;
+
+
+    }
+
     // Helper functions
 
     private function encode_user_id($user_id){
@@ -97,6 +112,28 @@ class Ooyala{
             $params[] = "$key=$value";
         }
         return $url . implode('&', $params);
+    }
+
+    private function generic_get_request($requestPath){
+
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'GET',
+            ),
+        );
+        $context  = stream_context_create($options);
+        // file_get_contents can fail setting the E_WARNING flag instead
+        // of throwing an exception. To avoid this from showing on your
+        // page, change the enviroment or the error reporting level at index.php
+        // at the top of the CodeIgniter installation
+        try {
+            $result = file_get_contents($requestPath, false, $context);
+        } catch (Exception $e) {
+            $result = "";
+        }
+
+        return $result;
     }
 
 }
