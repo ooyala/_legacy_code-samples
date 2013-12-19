@@ -80,6 +80,7 @@
 		<p>The available routes are:</p>
 		<code>
 			<a href="<?php echo base_url(); ?>index.php/Atlas/simple">/Atlas/simple</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Atlas/player_token">/Atlas/player_token</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus">/Atlas/message_bus</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus_advanced">/Atlas/message_bus_advanced</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Atlas/cross_resume">/Atlas/cross_resume</a> <br>
