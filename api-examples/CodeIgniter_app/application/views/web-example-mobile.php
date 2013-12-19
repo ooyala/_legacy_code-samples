@@ -42,6 +42,16 @@
         var mb = videoPlayer.mb
       </script>
 
+      <div class="related_video_container">
+          <div class='side_container'>
+             <img id="trending_1" class="video trending_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+              <div id="trending_caption_1" class="caption">Trending</div>
+          </div>
+          <div class='side_container'>
+             <img id="trending_2" class="video trending_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+              <div id="trending_caption_2" class="caption">Trending</div>
+          </div>
+      </div>
       <script src="<?php echo base_url();?>/application/assets/javascript/web-sample-mobile.js"> </script>
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
