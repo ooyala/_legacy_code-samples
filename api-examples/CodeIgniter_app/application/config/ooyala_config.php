@@ -7,4 +7,5 @@ $config['default_player_id'] = "YOUR_DEFAULT_PLAYER_ID";
 $config['google_ima_player_id'] = "YOUR_GOOGLE_IMA_PLAYER_ID";
 $config['sample_email'] = "alice@ooyala.com";
 $config['google_ima_ad_tag'] = "YOUR_GOOGLE_IMA_AD_TAG";
+$config['twitter_user'] = "ooyala" // Without the '@'
 ?>
