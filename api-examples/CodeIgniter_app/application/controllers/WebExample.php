@@ -49,6 +49,9 @@
 
             // Pass related videos as json to use in the view later
             $data['related_videos'] = json_encode($result);
+            $trending_videos = $this->_api_wrapper->get_trending_videos();
+            $trending_videos = $trending_videos->results;
+            $data['trending_videos'] = json_encode($trending_videos);
             $this->load->view('web-example-mobile', $data);
         }
 
