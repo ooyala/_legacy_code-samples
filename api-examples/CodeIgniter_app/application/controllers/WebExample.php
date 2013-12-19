@@ -33,6 +33,10 @@
             $trending_videos = $this->_api_wrapper->get_trending_videos();
             $trending_videos = $trending_videos->results;
             $data['trending_videos'] = json_encode($trending_videos);
+
+            // Get tags to allow embedding video in Twitter
+            $data['twitter_meta_tags'] = $this->_api_wrapper->get_twitter_card_info($data['player_id'], $data['embed_code']);
+
             $this->load->view('web-example', $data);
         }
 
