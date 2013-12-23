@@ -20,6 +20,7 @@ OO.plugin("WebSample", function (OO, _, $, W) {
     },
 
     onContentFetched: function (eventName, content) {
+      // Set the title and description in the page
       var video_title = content.title;
       var video_description = content.description;
       $("#video_title").text(video_title);
@@ -70,7 +71,6 @@ OO.ready(function (OO){
       var embedCode = related_videos[id].embed_code;
       videoPlayer.setCurrentItemEmbedCode(embedCode);
   });
-
   $(".trending_video").click( function(event) {
        var callingContainer = event.target.id;
        var id = callingContainer.charAt(callingContainer.length - 1);
