@@ -5,10 +5,10 @@
 // with mobile versions of your website
 
 $(document).ready(function() {
-    var availableWidth = $(window).width();
-    var availableHeight = $(window).height();
-    if (availableWidth < 700) {
+    var windowWidth = $(window).width();
+    if (windowWidth < 700) {
         $(".related_video_container").hide();
+        // Use the full width of the player to display the player
         $("#playerwrapper").width("100%");
         // Use aspect ratio 4:3
         var computedWidth = $("#playerwrapper").width();
