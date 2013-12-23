@@ -51,26 +51,26 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         init: function () {
             // subscribe to relevant player events-
             // see http://underscorejs.org/#bind
-            this.mb.subscribe(OO.EVENTS.PLAYER_CREATED, 'customerUi',
-            _.bind(this.onPlayerCreate, this));
+            this.mb.subscribe(OO.EVENTS.PLAYER_CREATED,
+                'GaTrack', _.bind(this.onPlayerCreate, this));
             this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED,
-                'customerUi', _.bind(this.onTimeUpdate, this));
+                'GaTrack', _.bind(this.onTimeUpdate, this));
             this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED,
-                'customerUi', _.bind(this.onContentReady, this));
+                'GaTrack', _.bind(this.onContentReady, this));
             this.mb.subscribe(OO.EVENTS.PLAYING,
-                'customerUi', _.bind(this.onPlay, this));
+                'GaTrack', _.bind(this.onPlay, this));
             this.mb.subscribe(OO.EVENTS.PLAYED,
-                'customerUi', _.bind(this.onEnd, this));
+                'GaTrack', _.bind(this.onEnd, this));
             this.mb.subscribe(OO.EVENTS.PLAY_FAILED,
-                'customerUi', _.bind(this.onFail, this));
+                'GaTrack', _.bind(this.onFail, this));
             this.mb.subscribe(OO.EVENTS.METADATA_FETCHED,
-                'customerUi', _.bind(this.onMetadataFetched, this));
+                'GaTrack', _.bind(this.onMetadataFetched, this));
             this.mb.subscribe(OO.EVENTS.WILL_PLAY_ADS,
-                'customerUi', _.bind(this.onWillPlayAds, this));
+                'GaTrack', _.bind(this.onWillPlayAds, this));
             this.mb.subscribe(OO.EVENTS.ADS_PLAYED,
-                'customerUi', _.bind(this.onAdsPlayed, this));
+                'GaTrack', _.bind(this.onAdsPlayed, this));
             this.mb.subscribe(OO.EVENTS.PAUSED,
-                'customerUi', _.bind(this.onPaused, this));
+                'GaTrack', _.bind(this.onPaused, this));
         },
 
         // Custom logger
@@ -84,7 +84,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
 
         // Event handlers
-        // All events recieve as a first parameter the event name
+        // All events recieve as first parameter the event name
 
         // Handles the PLAYER_CREATED event
         // First parameter is the event name
@@ -182,18 +182,18 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
             this.consoleLog("onFail");
         },
 
-        onMetadataFetched: function (funcLabel, data) {
-            this.metaData = data;
+        onMetadataFetched: function (eventName, metadata) {
+            this.metaData = metadata;
         },
 
-        onWillPlayAds: function(funcLabel, data) {
+        onWillPlayAds: function() {
             this.currentPlaybackType = 'ad';
 
             this.reportToGa('adPlaybackStarted');
             this.consoleLog("onWillPlayAds");
         },
 
-        onAdsPlayed: function(funcLabel, data) {
+        onAdsPlayed: function() {
             this.currentPlaybackType = 'content';
             this.reportToGa('adPlaybackFinished');
             this.reportToGa('playbackStarted');
@@ -228,7 +228,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
             }
         },
 
-        reportToGa: function (eventName) {
+        reportToGa: function (event) {
             if(this.gaMethod && this.lastEventReported != event) {
                 // Ooyala event subscriptions result in duplicate triggers; we'll filter them out here
                 this.lastEventReported = event;
