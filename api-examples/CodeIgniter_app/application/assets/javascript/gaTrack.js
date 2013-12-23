@@ -107,7 +107,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         // Handles CONTENT_TREE_FETCHED event
         // Second parameter is a content object with details about the
         // content that was loaded into the player
-        // In this example, we use the parameter to update duration
         onContentReady: function (eventName, content) {
             this.content = content;
             this.embedIdentifier = this.content.embed_code;
@@ -116,20 +115,21 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
             this.consoleLog("onContentReady");
         },
 
-        // Handles PLAYHEAD_TIME_CHANGED event
-        // In this example, we use it to move the slider as content is played
         onTimeUpdate: function (eventName, time, duration, buffer) {
+            // We don't save the duration of ads, just of content
             if(this.currentPlaybackType != 'content') {
-                return false;
+                return;
             }
 
-            // Update current position
+            // The duration is 0 when we are on live streaming, and since
+            // we don't know the duration of it, we don't record it
             if (duration > 0) {
                 this.duration = duration;
             }
 
             this.currentPlayheadPosition = time;
 
+            // Report each of the milestones
             var gaTrack = this;
             $.each(gaTrack.playbackMilestones, function() {
                 if((gaTrack.currentPlayheadPosition / gaTrack.duration) > this[0] && gaTrack.lastReportedPlaybackMilestone != this[0] && this[0] > gaTrack.lastReportedPlaybackMilestone) {
@@ -142,9 +142,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
         onPlay: function () {
             this.playing = true;
-
             this.clearErrors();
-
             if(this.currentPlaybackType == 'content') {
                 this.reportToGa('playbackStarted');
             } else {
@@ -188,7 +186,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
         onWillPlayAds: function() {
             this.currentPlaybackType = 'ad';
-
             this.reportToGa('adPlaybackStarted');
             this.consoleLog("onWillPlayAds");
         },
