@@ -24,11 +24,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         this.duration = NaN;
         this.metaData = NaN;
         this.playerRoot = NaN;
-        this.playerWidth = NaN;
-        this.playerHeight = NaN;
-        this.isOldIE = false;
-        this.isMobile = false;
-        this.embedIdentifier = NaN;
         this.gaMethod = NaN;
         this.content = NaN;
         this.currentPlaybackType = 'content';
@@ -36,11 +31,11 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         this.lastReportedPlaybackMilestone = 0;
         this.gaFormat = NaN;
 
-        // Create a global reference to each module.
         if(!window.ooyalaGaTrackModule) {
             window.ooyalaGaTrackModule = {};
         }
 
+        // Create a global reference to each module
         window.ooyalaGaTrackModule[this.identifier] = this;
 
         this.init(); // subscribe to relevant events
@@ -93,14 +88,8 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         // player upon creation.
         onPlayerCreate: function (eventName, elementId, params) {
             this.playerRoot = $("#" + elementId);
-            this.playerWidth = this.playerRoot.children('.innerWrapper').width();
-            this.playerHeight = this.playerRoot.children('.innerWrapper').height();
-
-            this.isMobile = this.playerRoot.find('video').size() > 0;
-
             this.importUserSettings();
             this.initGa();
-
             this.consoleLog("onPlayerCreate");
         },
 
@@ -109,8 +98,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         // content that was loaded into the player
         onContentReady: function (eventName, content) {
             this.content = content;
-            this.embedIdentifier = this.content.embed_code;
-
             this.reportToGa('contentReady');
             this.consoleLog("onContentReady");
         },
