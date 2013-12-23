@@ -17,8 +17,6 @@ OO.plugin("WebSample", function (OO, _, $, W) {
         'WebSample', _.bind(this.onContentFetched, this));
       this.mb.subscribe(OO.EVENTS.METADATA_FETCHED,
         'WebSample', _.bind(this.onMetadataFetched, this));
-      this.mb.subscribe(OO.EVENTS.PLAYER_CREATED,
-        'WebSample', _.bind(this.onPlayerCreated, this));
     },
 
     onContentFetched: function (eventName, content) {
@@ -34,10 +32,6 @@ OO.plugin("WebSample", function (OO, _, $, W) {
       console.warn(JSON.stringify(metadata));
       $("#metadata").text(metadata_as_string);
     },
-
-    onPlayerCreated: function (eventName, elementId) {
-      window.playerRoot = $("#" + elementId);
-    }
 
   });
   return WebExample;
@@ -56,6 +50,7 @@ OO.ready(function (OO){
   // having to search the entire DOM when looking for specific elements
   var releatedVideoContainer = $('#related_video_container');
   var trendingVideoContainer = $('.related_video_container');
+
   for (var i = 0; i < related_videos.length; i++) {
       try {
           // Set the image src to one of the related/trending videos
