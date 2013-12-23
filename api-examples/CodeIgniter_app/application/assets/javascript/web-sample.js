@@ -49,8 +49,8 @@ OO.ready(function (OO){
 
   // Reference to the related and trending video containers to avoid
   // having to search the entire DOM when looking for specific elements
-  var releatedVideoContainer = $('#related_video_container');
-  var trendingVideoContainer = $('.related_video_container');
+  var releatedVideoContainer = $('.related_video_container');
+  var trendingVideoContainer = $('.trending_video_container');
 
   for (var i = 0; i < related_videos.length; i++) {
       try {

@@ -21,11 +21,11 @@
     margin-left: 40px;
 }
 
-#related_video_container {
+.related_video_container {
     margin-top: 100px;
     width: 100%;
 }
 
-.related_video_container {
+.trending_video_container {
     float: left;
 }
