@@ -12,7 +12,7 @@
     float: left;
 }
 
-#playerwrapper {
+.player {
     width: 920px;
     height: 400px;
 }
