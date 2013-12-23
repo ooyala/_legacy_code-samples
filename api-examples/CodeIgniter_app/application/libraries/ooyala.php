@@ -69,7 +69,11 @@ class Ooyala{
 
     public function get_related_videos($embed_code){
         $parameters = array("limit" => "5");
-        $results = $this->_api->get("discover/similar/assets/", $parameters);
+        try {
+            $results = $this->_api->get("discover/similar/assets/", $parameters);
+        } catch (OoyalaRequestErrorException $e) {
+            $results = array();
+        }
         return $results;
     }
 
