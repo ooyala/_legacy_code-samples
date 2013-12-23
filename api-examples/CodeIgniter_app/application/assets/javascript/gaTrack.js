@@ -2,19 +2,23 @@
 // The first parameter is the module name
 // The second parameter is a factory function that will be called by
 // the player to create an instance of the module. This function must
-// return a constructor for the module class (see the end of this example)
+// return a constructor for the module class
 OO.plugin("GaTrackModule", function (OO, _, $, W) {
-    var GaTrack = {};
 
-    GaTrack.GaTrackModule = function (mb, id) {
+    // As this is defined as a plugin, each player will have their own
+    // definition of this module, hence avoiding message bus or other
+    // variables conflict
+    GaTrackModule = function (mb, id) {
         this.gaMechanism = 'events';
         this.gaPageviewFormat = 'ooyala-event/:event/:title';
         this.gaEventCategory = 'Ooyala';
         this.verboseLogging = false;
         this.playbackMilestones = [[0.25, 'playProgressQuarter'], [0.5, 'playProgressHalf'], [0.75, 'playProgressThreeQuarters'], [0.97, 'playProgressEnd']];
 
+        // Create a unique identifier so we can refer to each module
+        // by this id
         this.identifier = Math.floor(Math.random()*10000000000);
-        this.mb = mb; // save message bus reference for later use
+        this.mb = mb;
         this.id = id;
         this.playing = false;
         this.duration = NaN;
@@ -32,6 +36,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         this.lastReportedPlaybackMilestone = 0;
         this.gaFormat = NaN;
 
+        // Create a global reference to each module.
         if(!window.ooyalaGaTrackModule) {
             window.ooyalaGaTrackModule = {};
         }
@@ -42,9 +47,10 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
     };
 
     // public functions of the module object
-    GaTrack.GaTrackModule.prototype = {
+    GaTrackModule.prototype = {
         init: function () {
-            // subscribe to relevant player events
+            // subscribe to relevant player events-
+            // see http://underscorejs.org/#bind
             this.mb.subscribe(OO.EVENTS.PLAYER_CREATED, 'customerUi',
             _.bind(this.onPlayerCreate, this));
             this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED,
@@ -67,6 +73,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
                 'customerUi', _.bind(this.onPaused, this));
         },
 
+        // Custom logger
         consoleLog: function (what) {
             if(this.verboseLogging) {
                 if(typeof console != 'undefined') {
@@ -75,13 +82,16 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
             }
         },
 
+
+        // Event handlers
+        // All events recieve as a first parameter the event name
+
         // Handles the PLAYER_CREATED event
         // First parameter is the event name
         // Second parameter is the elementId of player container
         // Third parameter is the list of parameters which were passed into
         // player upon creation.
-        // In this section, we use this opportunity to create the custom UI
-        onPlayerCreate: function (event, elementId, params) {
+        onPlayerCreate: function (eventName, elementId, params) {
             this.playerRoot = $("#" + elementId);
             this.playerWidth = this.playerRoot.children('.innerWrapper').width();
             this.playerHeight = this.playerRoot.children('.innerWrapper').height();
@@ -98,7 +108,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
         // Second parameter is a content object with details about the
         // content that was loaded into the player
         // In this example, we use the parameter to update duration
-        onContentReady: function (event, content) {
+        onContentReady: function (eventName, content) {
             this.content = content;
             this.embedIdentifier = this.content.embed_code;
 
@@ -108,12 +118,12 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
         // Handles PLAYHEAD_TIME_CHANGED event
         // In this example, we use it to move the slider as content is played
-        onTimeUpdate: function (event, time, duration, buffer) {
+        onTimeUpdate: function (eventName, time, duration, buffer) {
             if(this.currentPlaybackType != 'content') {
                 return false;
             }
 
-            // update scrubber bar.
+            // Update current position
             if (duration > 0) {
                 this.duration = duration;
             }
@@ -168,7 +178,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
         onFail: function () {
             this.playing = false;
-
             this.reportToGa('playbackFailed');
             this.consoleLog("onFail");
         },
@@ -186,7 +195,6 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
         onAdsPlayed: function(funcLabel, data) {
             this.currentPlaybackType = 'content';
-
             this.reportToGa('adPlaybackFinished');
             this.reportToGa('playbackStarted');
             this.consoleLog("onAdsPlayed");
@@ -220,7 +228,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
             }
         },
 
-        reportToGa: function (event) {
+        reportToGa: function (eventName) {
             if(this.gaMethod && this.lastEventReported != event) {
                 // Ooyala event subscriptions result in duplicate triggers; we'll filter them out here
                 this.lastEventReported = event;
@@ -254,5 +262,5 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
     // Return the constructor of the module class.
     // This is required so that Ooyala’s player can instantiate the custom
     // module correctly.
-    return GaTrack.GaTrackModule;
+    return GaTrackModule;
 });
