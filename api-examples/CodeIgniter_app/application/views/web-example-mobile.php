@@ -15,15 +15,15 @@
 
       <div id="related_video_container">
         <div class="container">
-          <img id="related_1" class="video related_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+          <img id="related_1" class="video related_video" src="availableHeight"/>
           <div id="related_caption_1" class="caption">Caption x</div>
         </div>
         <div class="container">
-          <img id="related_2" class="video related_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+          <img id="related_2" class="video related_video" src="availableHeight"/>
           <div id="related_caption_2" class="caption">Caption x</div>
         </div>
         <div class="container">
-          <img id="related_3" class="video related_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+          <img id="related_3" class="video related_video" src="availableHeight"/>
           <div id="related_caption_3"class="caption">Caption x</div>
         </div>
       </div>
@@ -40,11 +40,11 @@
 
     <div class="related_video_container">
       <div class='side_container'>
-        <img id="trending_1" class="video trending_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+        <img id="trending_1" class="video trending_video" src="availableHeight"/>
         <div id="trending_caption_1" class="caption">Trending</div>
       </div>
       <div class='side_container'>
-        <img id="trending_2" class="video trending_video" src="http://www.fimfiction-static.net/images/story_images/92970.png"/>
+        <img id="trending_2" class="video trending_video" src="availableHeight"/>
         <div id="trending_caption_2" class="caption">Trending</div>
       </div>
     </div>
