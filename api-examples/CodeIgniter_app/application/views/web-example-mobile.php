@@ -9,11 +9,11 @@
   <h1> Web example </h1>
   <h1 id="video_title"> Title </h1>
     <div class="main">
-      <div id='playerwrapper'></div>
+      <div id='playerwrapper' class="player"></div>
       <p id="description"> Description </p>
       <p id="metadata"> Metadata </p>
 
-      <div id="related_video_container">
+      <div class="related_video_container">
         <div class="container">
           <img id="related_1" class="video related_video" src=""/>
           <div id="related_caption_1" class="caption">Caption x</div>
@@ -35,10 +35,10 @@
         OO.Player.create('playerwrapper', '<?php echo $embed_code; ?>', {
       });
       var related_videos = <?php echo $related_videos;?>;
-      var mb = videoPlayer.mb
+    var trending_videos = <?php echo $trending_videos;?>;
     </script>
 
-    <div class="related_video_container">
+  <div class="trending_video_container">
       <div class='side_container'>
         <img id="trending_1" class="video trending_video" src=""/>
         <div id="trending_caption_1" class="caption">Trending</div>
@@ -50,7 +50,6 @@
     </div>
     <!-- First source has the logic for onClick events and such, second handles resizing -->
     <script src="<?php echo base_url();?>/application/assets/javascript/web-sample.js"> </script>
-    <script src="<?php echo base_url();?>/application/assets/javascript/web-sample-mobile.js"> </script>
 
     <!-- Example of the Universal GA module. In production you would like to change this -->
     <script>
