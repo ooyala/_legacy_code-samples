@@ -52,9 +52,14 @@ OO.ready(function (OO){
       try {
           // Set the image src to one of the related/trending videos
           var queryRelated = "#related_" + i;
-          var queryTrending = "#trending_" + i;
+          var captionRelated = "#related_caption_" + i;
           releatedVideoContainer.find(queryRelated).attr("src", related_videos[i].preview_image_url);
+          releatedVideoContainer.find(captionRelated).text(related_videos[i].name);
+
+          var queryTrending = "#trending_" + i;
+          var captionTrending = "#trending_caption_" + i;
           trendingVideoContainer.find(queryTrending).attr("src", trending_videos[i].preview_image_url);
+          trendingVideoContainer.find(captionTrending).text(trending_videos[i].name);
       } catch(e) {
           // do nothing
       }
