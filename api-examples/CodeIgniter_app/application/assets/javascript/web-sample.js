@@ -5,8 +5,6 @@ OO.plugin("WebSample", function (OO, _, $, W) {
   WebExample = function (mb, id) {
       this.mb = mb;
       this.id = id;
-      console.log("related videos", related_videos);
-      console.log("trending videos", trending_videos);
       this.init();
   };
 
@@ -29,8 +27,6 @@ OO.plugin("WebSample", function (OO, _, $, W) {
 
     onMetadataFetched: function (eventName, metadata) {
       var metadata_as_string = JSON.stringify(metadata.base);
-      console.log(metadata);
-      console.warn(JSON.stringify(metadata));
       $("#metadata").text(metadata_as_string);
     },
 
