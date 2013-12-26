@@ -81,7 +81,7 @@
             $this->load->view('message-bus-advanced', $data);
         }
 
-        public function token(){
+        public function player_token(){
             $data['player_id'] = $this->_default_player_id;
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
