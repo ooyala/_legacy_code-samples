@@ -3,12 +3,17 @@ This is a CodeIgniter app to show you how to work with our technology. It featur
 
 ## CodeIgniter
 
-This is a sample CodeIgniter app made for getting yourself running in no time. It is already integrated with the Ooyala PHP SDK (/application/third_party/php-v2-sdk) and CodeIgniter framework, so there is no need to add anything external.
+This is a sample CodeIgniter app made for getting yourself running in no time. It is already integrated with the Ooyala PHP SDK and the CodeIgniter framework, so it is self-contained.
 
 ## What is CodeIgniter
-CodeIgniter is a framework in PHP designed to have as low overhead as possible. It follows an MVC pattern, where you pass information to the view in the following way:
+[CodeIgniter](http://ellislab.com/codeigniter) is a framework in PHP designed to have as low overhead as possible. It follows an MVC pattern, where you pass information to the view in the following way:
 $this->view->load("name_of_the_view", $data)
 
+## What is Ooyala PHP SDK
+The SDK is a client class to interact with [Ooyala V2 API](http://support.ooyala.com/developers/documentation/concepts/book_api.html). This example already has a copy of it at /application/third_party/php-v2-sdk but if you have any doubts or want to check out the source you can find it [here]((/application/third_party/php-v2-sdk))
+
+
+## Folders structure
 The relevant files are structured in the following way:
 /application
     /assets
@@ -22,12 +27,12 @@ The relevant files are structured in the following way:
 ## How to get it running
 1. You need to have a server running that can interpret PHP, like Apache or Nginx.
 2. Clone this repository in your server
-3. The path for the example would be "your_base_path/code-samples/api-examples/CodeIgniter_app/index.php". So, if you are running this from your localhost, you will have a URL like "localhost/code-samples/api-examples/CodeIgniter_app/index.php"
+3. The path for the example would be "your_base_path/code-samples/index.php". So, if you are running this from your localhost, you will have a URL like "localhost/code-samples/index.php"
 4. In order to get more than the welcome page, you need to modify the values in application/config/ooyala_config.php. There you will be asked for you API key, secret, embed code and some other stuff. For more information about this you can check [our documentation](http://support.ooyala.com/developers/documentation/concepts/api_keys.html)
 
 For more information about CodeIgniter installation you can check [their webpage](http://ellislab.com/codeigniter/user-guide/installation/)
 
-## Structure
+## URL structure
 CodeIgniter urls follow a structure like
  ```
 http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
