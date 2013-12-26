@@ -39,14 +39,14 @@ http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
  ```
  Currently, this example has the following routes
 
-| Route                      | Info                                                                     |
-|----------------------------|--------------------------------------------------------------------------|
-| Atlas/cross_resume         | Cross device resume                                                      |
-| Atlas/simple               | Barebones player                                                         |
-| Atlas/message_bus          | Simple message bus handling                                              |
-| Atlas/message_bus_advanced | Milestones with message bus                                              |
-| Atlas/token                | An example with playerToken                                              |
-| Atlas/google_ima           | Player with Google IMA enabled                                           |
-| Atlas/multi_feature        | An example that has all of the above                                     |
-| WebExample/                | A simple client page that shows a video with trending and related videos |
-| WebExample/mobile          | The same as WebExample root but with page resizing                       |
+| Route                                     | Info                                                                     |
+|-------------------------------------------|--------------------------------------------------------------------------|
+| Secure_XDR_GoogleIMA/cross_resume         | Cross device resume                                                      |
+| Secure_XDR_GoogleIMA/simple               | Barebones player                                                         |
+| Secure_XDR_GoogleIMA/message_bus          | Simple message bus handling                                              |
+| Secure_XDR_GoogleIMA/message_bus_advanced | Milestones with message bus                                              |
+| Secure_XDR_GoogleIMA/token                | An example with playerToken                                              |
+| Secure_XDR_GoogleIMA/google_ima           | Player with Google IMA enabled                                           |
+| Secure_XDR_GoogleIMA/multi_feature        | An example that has all of the above                                     |
+| WebExample/                               | A simple client page that shows a video with trending and related videos |
+| WebExample/mobile                         | The same as WebExample root but with page resizing                       |

@@ -1,5 +1,5 @@
 <?php
-    class Atlas extends CI_Controller{
+    class Secure_XDR_GoogleIMA extends CI_Controller{
 
         private $_api_wrapper;
         private $_default_embed_code;

@@ -75,17 +75,17 @@
 			to configure your api key, api secret and else at application/config/ooyala_config.php</p>
 
 		<p>For example number one, please hit</p>
-		<code><a href="<?php echo base_url(); ?>index.php/Atlas"><?php echo base_url(); ?>index.php/Atlas</a></code>
+		<code><a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA"><?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA</a></code>
 
 		<p>The available routes are:</p>
 		<code>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/simple">/Atlas/simple</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/player_token">/Atlas/player_token</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus">/Atlas/message_bus</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/message_bus_advanced">/Atlas/message_bus_advanced</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/cross_resume">/Atlas/cross_resume</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/google_ima">/Atlas/google_ima</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Atlas/multi_feature">/Atlas/multi_feature</a>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/simple">/Secure_XDR_GoogleIMA/simple</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/player_token">/Secure_XDR_GoogleIMA/player_token</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/message_bus">/Secure_XDR_GoogleIMA/message_bus</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/message_bus_advanced">/Secure_XDR_GoogleIMA/message_bus_advanced</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/cross_resume">/Secure_XDR_GoogleIMA/cross_resume</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/google_ima">/Secure_XDR_GoogleIMA/google_ima</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/multi_feature">/Secure_XDR_GoogleIMA/multi_feature</a>
 
 		</code>
 
