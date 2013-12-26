@@ -2,7 +2,7 @@
 <!--
 This example sets up a simple desktop page that shows a main video, along with related videos
 and videos that are trending right now. For more information on how to get to those, please see
-the controller webexample.php
+the controller web_example.php
 -->
 <html>
 <head>

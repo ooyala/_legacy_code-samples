@@ -1,5 +1,5 @@
 <?php
-    class WebExample extends CI_Controller{
+    class Web_example extends CI_Controller{
         private $_api_wrapper;
         private $_default_embed_code;
         private $_default_player_id;

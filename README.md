@@ -48,5 +48,5 @@ http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
 | Secure_XDR_GoogleIMA/token                | An example with playerToken                                              |
 | Secure_XDR_GoogleIMA/google_ima           | Player with Google IMA enabled                                           |
 | Secure_XDR_GoogleIMA/multi_feature        | An example that has all of the above                                     |
-| WebExample/                               | A simple client page that shows a video with trending and related videos |
-| WebExample/mobile                         | The same as WebExample root but with page resizing                       |
+| Web_example/                              | A simple client page that shows a video with trending and related videos |
+| Web_example/mobile                        | The same as Web_example root but with page resizing                      |
