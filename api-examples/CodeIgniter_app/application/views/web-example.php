@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+This example sets up a simple desktop page that shows a main video, along with related videos
+and videos that are trending right now. For more information on how to get to those, please see
+the controller webexample.php
+-->
 <html>
 <head>
  <script src="http://player.ooyala.com/v3/<?php echo $player_id; ?>"></script>

@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+This is meant as an extension to web-example.php
+The main difference within it is not in the controller logic but rather in content
+resizing that adapts to the available width.
+Check web-sample-mobile.js for resizing logic
+-->
 <html>
 <head>
  <script src="http://player.ooyala.com/v3/<?php echo $player_id; ?>"></script>
