@@ -1,4 +1,7 @@
-# CodeIgniter
+# Ooyala code sample
+This is a CodeIgniter app to show you how to work with our technology. It features [Discovery](http://support.ooyala.com/developers/documentation/concepts/chapter_content_discovery.html) for getting recommendations, [Player token](http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html) for content protection, Google IMA for ads, among other things. Be sure to check them out!
+
+## CodeIgniter
 
 This is a sample CodeIgniter app made for getting yourself running in no time. It is already integrated with the Ooyala PHP SDK (/application/third_party/php-v2-sdk) and CodeIgniter framework, so there is no need to add anything external.
 
