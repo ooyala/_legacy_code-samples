@@ -15,15 +15,15 @@
 
       <div id="related_video_container">
         <div class="container">
-          <img id="related_1" class="video related_video" src="availableHeight"/>
+          <img id="related_1" class="video related_video" src=""/>
           <div id="related_caption_1" class="caption">Caption x</div>
         </div>
         <div class="container">
-          <img id="related_2" class="video related_video" src="availableHeight"/>
+          <img id="related_2" class="video related_video" src=""/>
           <div id="related_caption_2" class="caption">Caption x</div>
         </div>
         <div class="container">
-          <img id="related_3" class="video related_video" src="availableHeight"/>
+          <img id="related_3" class="video related_video" src=""/>
           <div id="related_caption_3"class="caption">Caption x</div>
         </div>
       </div>
@@ -40,14 +40,16 @@
 
     <div class="related_video_container">
       <div class='side_container'>
-        <img id="trending_1" class="video trending_video" src="availableHeight"/>
+        <img id="trending_1" class="video trending_video" src=""/>
         <div id="trending_caption_1" class="caption">Trending</div>
       </div>
       <div class='side_container'>
-        <img id="trending_2" class="video trending_video" src="availableHeight"/>
+        <img id="trending_2" class="video trending_video" src=""/>
         <div id="trending_caption_2" class="caption">Trending</div>
       </div>
     </div>
+    <!-- First source has the logic for onClick events and such, second handles resizing -->
+    <script src="<?php echo base_url();?>/application/assets/javascript/web-sample.js"> </script>
     <script src="<?php echo base_url();?>/application/assets/javascript/web-sample-mobile.js"> </script>
 
     <!-- Example of the Universal GA module. In production you would like to change this -->
