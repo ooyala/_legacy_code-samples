@@ -1,4 +1,18 @@
 <?php
+    /**
+     * This controller handles a sample webpage showing how to interact
+     * with the Discovery API and getting Twitter card information.
+     * The name of the class is the name of the general route, and each function
+     * (expect __construct) is a route. So, if we wanted to see multi_feature
+     * we will go to example.com/Secure_XDR_GoogleIMA/multi_feature
+     * The views are loaded as in
+     * $this->load->view('file-name', $data)
+     * where $data is an optional array that has useful
+     * variables for the view
+     *
+     * Be sure to check the views also in order to get
+     * the full picture of what is happening in each route
+     */
     class Web_example extends CI_Controller{
         private $_api_wrapper;
         private $_default_embed_code;
@@ -9,22 +23,33 @@
 
         function __construct() {
             parent::__construct();
-            // We load the configuration file
+            // Load the configuration file
             $this->CI =& get_instance();
             $this->CI->load->config('ooyala_config');
-            // We load Ooyala wrapper
+            // Load Ooyala wrapper
             $this->load->library('ooyala');
+
             $this->load->helper('url');
+
+            // Load variables defined in the library
             $this->_default_embed_code = $this->CI->config->item('default_embed_code');
             $this->_default_player_id = $this->CI->config->item('default_player_id');
+
+            // Finally, create a new instance
             $this->_api_wrapper = new Ooyala();
         }
 
+        /**
+         * Default route, makes a request to Discovery API to get related videos
+         * to the default embed code and another to get trending videos worldwide.
+         * It also makes a request to get the necessary meta-tags for Twitter cards
+         *
+         * @see libraries/ooyala.php
+         * @see https://dev.twitter.com/cards
+         */
         public function index(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
-
-            // This will be abstracted in an API
             $result = $this->_api_wrapper->get_related_videos($this->_default_embed_code);
             $result = $result->results;
 
@@ -40,6 +65,9 @@
             $this->load->view('web-example', $data);
         }
 
+        /**
+         * Very much like index, the main difference is in the view and the resizing page
+         */
         public function mobile(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
