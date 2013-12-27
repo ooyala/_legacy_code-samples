@@ -2,23 +2,21 @@ OO.plugin("MilestoneWithAds", function (OO, _, $, W) {
   MilestoneWithAds = function(mb, id) {
     this.mb = mb;
     this.id = id;
-    var playerIsFlash = false;
+    this.playerIsFlash = false;
 
     // This are the milestones to track. The way we are tracking them
     // is setting a boolean each time the video passes a milestone. For
     // a different approach, check gaTrack.js
-    var videoStarted = false;
-    var _25per = false;
-    var _50per = false;
-    var _75per = false;
-    var videoEnded = false;
-
-    var videoLength = 0;
-    var _25milestone;
-    var _50milestone;
-    var _75milestone;
-
-    var isAdPlaying = false;
+    this.videoStarted = false;
+    this._25per = false;
+    this._50per = false;
+    this._75per = false;
+    this.videoEnded = false;
+    this.videoLength = 0;
+    this._25milestone = 0;
+    this._50milestone = 0;
+    this._75milestone = 0;
+    this.isAdPlaying = false;
     this.init();
   };
 
@@ -60,80 +58,80 @@ OO.plugin("MilestoneWithAds", function (OO, _, $, W) {
 
     // Event functions
     onPlaybackReady: function() {
-      playerIsFlash = isFlash();
+      this.playerIsFlash = isFlash();
     },
 
     onWillPlayAds: function() {
       this.write("An ad will be played");
-      isAdPlaying = true;
+      this.isAdPlaying = true;
     },
 
     onAdsPlayed: function() {
       this.write("Ads finished");
-      isAdPlaying = false;
+      this.isAdPlaying = false;
     },
 
     onContentTreeFetched: function (eventName, content) {
       // Flash reports the duration as "time" in seconds
-      if (playerIsFlash) {
-        videoLength = content.time;
+      if (this.playerIsFlash) {
+        this.videoLength = content.time;
       } else {
         // HTML reports video in miliseconds and as "duration"
-        videoLength = content.duration;
-        videoLength = videoLength / 1000;
+        this.videoLength = content.duration;
+        this.videoLength = this.videoLength / 1000;
       }
       // Define the duration of the milestones
-      _25milestone = 1 * (videoLength / 4);
-      _50milestone = 2 * (videoLength / 4);
-      _75milestone = 3 * (videoLength / 4);
+      this._25milestone = 1 * (this.videoLength / 4);
+      this._50milestone = 2 * (this.videoLength / 4);
+      this._75milestone = 3 * (this.videoLength / 4);
     },
 
     onPlaying: function() {
-      if (isAdPlaying) {
+      if (this.isAdPlaying) {
         // Ignore the event if it's not the main video
         return;
       }
-      if (videoEnded) {
+      if (this.videoEnded) {
         // Reset all values
         // We are asuming we hit replay on the same video
-        videoStarted = false;
-        _25per = false;
-        _50per = false;
-        _75per = false;
-        videoEnded = false;
+        this.videoStarted = false;
+        this._25per = false;
+        this._50per = false;
+        this._75per = false;
+        this.videoEnded = false;
         this.write("Replaying video");
       }
 
-      if (!videoStarted){
-        videoStarted = true;
+      if (!this.videoStarted){
+        this.videoStarted = true;
         this.write("Video began playback");
       }
     },
 
     onPlayheadTimeChanged: function (eventName, currentTime) {
       // Ignore the event if it's not the main video
-      if (isAdPlaying) {
+      if (this.isAdPlaying) {
         return;
       }
 
       // We check from first to last to account for scrubbing
-      if (currentTime > _75milestone && !_75per) {
-        _25per = true;
-        _50per = true;
-        _75per = true;
+      if (currentTime > this._75milestone && !this._75per) {
+        this._25per = true;
+        this._50per = true;
+        this._75per = true;
         this.write("We hit the 75% milestone");
-      } else if (currentTime > _50milestone && !_50per) {
-        _25per = true;
-        _50per = true;
+      } else if (currentTime > this._50milestone && !this._50per) {
+        this._25per = true;
+        this._50per = true;
         this.write("We hit the 50% milestone");
-      } else if (currentTime > _25milestone && !_25per) {
-        _25per = true;
+      } else if (currentTime > this._25milestone && !this._25per) {
+        this._25per = true;
         this.write("We hit the 25% milestone");
       }
     },
 
     onPlayed: function() {
-      videoEnded = true;
+      this.videoEnded = true;
       this.write("Video endeded");
     }
   });
