@@ -1,92 +1,110 @@
-this.mb = window.mb;
+OO.plugin("SimpleMilestones", function (OO, _, $, W) {
+    SimpleMilestones = function(mb, id) {
+        this.mb = mb;
+        this.id = id;
+        var playerIsFlash = false;
 
-var playerIsFlash = false;
+        // This flags are to avoid duplicating
+        // milestones events. Once the user has
+        // reached 25 percent we won't trigger
+        // that event again, unless replay
+        this.videoStarted = false;
+        this._25per = false;
+        this._50per = false;
+        this._75per = false;
+        this.videoEnded = false;
 
-// This flags are to avoid duplicating
-// milestones events. Once the user has
-// reached 25 percent we won't trigger
-// that event again, unless replay
-var videoStarted = false;
-var _25per = false;
-var _50per = false;
-var _75per = false;
-var videoEnded = false;
+        this.videoLength = 0;
+        this._25milestone = 0;
+        this._50milestone = 0;
+        this._75milestone = 0;
+        this.init();
+    };
 
-var videoLength = 0;
-var _25milestone;
-var _50milestone;
-var _75milestone;
+    _.extend(SimpleMilestones.prototype, {
+        init: function() {
 
+            this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED,
+              "SimpleMilestones", _.bind(this.onContentTreeFetched, this));
+            this.mb.subscribe(OO.EVENTS.PLAYING,
+              "SimpleMilestones", _.bind(this.onPlaying, this));
+            this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED,
+              "SimpleMilestones", _.bind(this.onPlayheadTimeChanged, this));
+            this.mb.subscribe(OO.EVENTS.PLAYED,
+              "SimpleMilestones", _.bind(this.onPlayed, this));
+        },
 
-this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED, "func1", function (eventName, arg1, arg2) {
-  playerIsFlash = isFlash();
-  if (playerIsFlash){
-    // Flash reports events in seconds
-    videoLength = arg1.time;
-  }
-  else{
-    // HTML reports video in miliseconds
-    videoLength = arg1.duration;
-    videoLength = videoLength / 1000;
-  }
-  _25milestone = 1 * (videoLength / 4);
-  _50milestone = 2 * (videoLength / 4);
-  _75milestone = 3 * (videoLength / 4);
+        // Helper functions
+        isFlash: function() {
+          try {
+            return OO.requiredInEnvironment('flash-playback');
+          } catch(e) {
+            // Fallback, asume true
+            return true;
+          }
+        },
+
+        write: function(text) {
+            var textLog = document.getElementById("textLog");
+            textLog.innerHTML = textLog.value + new Date() + ":" + text + "\n";
+        },
+
+        onContentTreeFetched: function(eventName, content) {
+          playerIsFlash = this.isFlash();
+          if (playerIsFlash){
+            // Flash reports events in seconds
+            this.videoLength = content.time;
+          }
+          else{
+            // HTML reports video in miliseconds
+            this.videoLength = content.duration;
+            this.videoLength = this.videoLength / 1000;
+          }
+          this._25milestone = 1 * (this.videoLength / 4);
+          this._50milestone = 2 * (this.videoLength / 4);
+          this._75milestone = 3 * (this.videoLength / 4);
+        },
+        onPlaying: function() {
+          if (this.videoEnded){
+            // Reset all values
+            // We are asuming we hit replay on the same video
+            this.videoStarted = false;
+            this._25per = false;
+            this._50per = false;
+            this._75per = false;
+            this.videoEnded = false;
+            this.write("Replaying video");
+          }
+
+          if (!this.videoStarted){
+            this.videoStarted = true;
+            this.write("Video began playback");
+          }
+        },
+        onPlayheadTimeChanged: function(eventName, currentTime) {
+          // We check from first to last to account for scrubbing
+          if (currentTime > this._75milestone && !this._75per){
+            this._25per = true;
+            this._50per = true;
+            this._75per = true;
+            this.write("We hit the 75% milestone");
+          }
+          else if (currentTime > this._50milestone && !this._50per) {
+            this._25per = true;
+            this._50per = true;
+            this.write("We hit the 50% milestone");
+          }
+          else if (currentTime > this._25milestone && !this._25per){
+            this._25per = true;
+            this.write("We hit the 25% milestone");
+          }
+        },
+        onPlayed: function() {
+          this.videoEnded = true;
+          this.write("Video endeded");
+        }
+
+    });
+
+    return SimpleMilestones;
 });
-
-this.mb.subscribe(OO.EVENTS.PLAYING, "func2", function (eventName, arg1, arg2) {
-  if (videoEnded){
-    // Reset all values
-    // We are asuming we hit replay on the same video
-    videoStarted = false;
-    _25per = false;
-    _50per = false;
-    _75per = false;
-    videoEnded = false;
-    write("Replaying video");
-  }
-
-  if (!videoStarted){
-    videoStarted = true;
-    write("Video began playback");
-  }
-});
-
-this.mb.subscribe(OO.EVENTS.PLAYHEAD_TIME_CHANGED, "func3", function (eventName, currentTime) {
-  // We check from first to last to account for scrubbing
-  if (currentTime > _75milestone && !_75per){
-    _25per = true;
-    _50per = true;
-    _75per = true;
-    write("We hit the 75% milestone");
-  }
-  else if (currentTime > _50milestone && !_50per) {
-    _25per = true;
-    _50per = true;
-    write("We hit the 50% milestone");
-  }
-  else if (currentTime > _25milestone && !_25per){
-    _25per = true;
-    write("We hit the 25% milestone");
-  }
-});
-
-this.mb.subscribe(OO.EVENTS.PLAYED, "func4", function (eventName){
-  videoEnded = true;
-  write("Video endeded");
-});
-
-function isFlash(){
-  try{
-    return OO.__internal.requiredInEnvironment('flash-playback');
-  }
-  catch(e){
-    // Fallback, asume true
-    return true;
-  }
-}
-
-function write(text) {
-    var textLog = document.getElementById("textLog");
-    textLog.innerHTML = textLog.value+new Date()+":"+text+"\n";
-}
