@@ -10,26 +10,27 @@
      <div id="logName"><textarea id="textLog" style="width:640px; height:300px;">Log file:</textarea></div>
      <script>
          var playheadTime = <?php if($playhead_time) {echo $playhead_time;} else echo '0';?>;
-         var videoPlayer =
-            OO.Player.create('playerwrapper','<?php echo $embed_code; ?>', {
+         OO.ready ( function () {
+            window.videoPlayer =
+               OO.Player.create('playerwrapper','<?php echo $embed_code; ?>', {
 
-            <?php
-            if($embed_token_url){
-              echo "embedToken : " . "\"" . $embed_token_url . "\"" . ",";
-            }
-            ?>
-            <?php
-            if($uses_google_ima){
-              $output = "\"google-ima-ads-manager\"" . ":" . "{";
-              $output .= "\"adTagUrl\"" . ":" . "\"" . $adTagUrl . "\"";
-              $output .= "}" . ",";
-              echo $output;
-            }
-            ?>
+               <?php
+               if($embed_token_url){
+                 echo "embedToken : " . "\"" . $embed_token_url . "\"" . ",";
+               }
+               ?>
+               <?php
+               if($uses_google_ima){
+                 $output = "\"google-ima-ads-manager\"" . ":" . "{";
+                 $output .= "\"adTagUrl\"" . ":" . "\"" . $adTagUrl . "\"";
+                 $output .= "}" . ",";
+                 echo $output;
+               }
+               ?>
 
-            initialTime: playheadTime
-        });
-        this.mb = videoPlayer.mb;
+               initialTime: playheadTime
+           });
+         });
       </script>
       <script src="<?php echo base_url();?>/application/assets/javascript/milestones_with_ads.js"></script>
   </body>
