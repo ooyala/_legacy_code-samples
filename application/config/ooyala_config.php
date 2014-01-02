@@ -5,7 +5,7 @@ $config['api_key'] = "YOUR_API_KEY";
 $config['api_secret'] = "YOUR_API_SECRET";
 $config['p_code'] = "YOUR_P_CODE";
 
-// Default embed code and player id to use on the examples.
+// Default content and player id to use on the examples.
 // You can grab anyone from your Backlot account
 $config['default_embed_code'] = "YOUR_DEFAULT_EMBED_CODE";
 $config['default_player_id'] = "YOUR_DEFAULT_PLAYER_ID";
