@@ -85,8 +85,8 @@
 			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/message_bus_advanced">/Secure_XDR_GoogleIMA/message_bus_advanced</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/cross_resume">/Secure_XDR_GoogleIMA/cross_resume</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/google_ima">/Secure_XDR_GoogleIMA/google_ima</a> <br>
-			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/multi_feature">/Secure_XDR_GoogleIMA/multi_feature</a>
-			<a href="<?php echo base_url(); ?>index.php/Web_Example/">/Web_example</a>
+			<a href="<?php echo base_url(); ?>index.php/Secure_XDR_GoogleIMA/multi_feature">/Secure_XDR_GoogleIMA/multi_feature</a> <br>
+			<a href="<?php echo base_url(); ?>index.php/Web_Example/">/Web_example</a> <br>
 			<a href="<?php echo base_url(); ?>index.php/Web_Example/mobile">/Web_example/mobile</a>
 
 		</code>
