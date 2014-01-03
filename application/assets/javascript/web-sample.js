@@ -21,7 +21,7 @@ OO.plugin("WebSample", function (OO, _, $, W) {
       // Set the title and description in the page
       var video_title = content.title;
       var video_description = content.description;
-      $("#video_title").text(video_title);
+      $("#video-title").text(video_title);
       $("#description").text(video_description);
     },
 
@@ -45,19 +45,19 @@ OO.ready(function (OO){
 
   // Reference to the related and trending video containers to avoid
   // having to search the entire DOM when looking for specific elements
-  var releatedVideoContainer = $('.related_video_container');
-  var trendingVideoContainer = $('.trending_video_container');
+  var releatedVideoContainer = $('.related-video-container');
+  var trendingVideoContainer = $('.trending-video-container');
 
   for (var i = 0; i < related_videos.length; i++) {
       try {
           // Set the image src to one of the related/trending videos
-          var queryRelated = "#related_" + i;
-          var captionRelated = "#related_caption_" + i;
+          var queryRelated = "#related-" + i;
+          var captionRelated = "#related-caption-" + i;
           releatedVideoContainer.find(queryRelated).attr("src", related_videos[i].preview_image_url);
           releatedVideoContainer.find(captionRelated).text(related_videos[i].name);
 
-          var queryTrending = "#trending_" + i;
-          var captionTrending = "#trending_caption_" + i;
+          var queryTrending = "#trending-" + i;
+          var captionTrending = "#trending-caption-" + i;
           trendingVideoContainer.find(queryTrending).attr("src", trending_videos[i].preview_image_url);
           trendingVideoContainer.find(captionTrending).text(trending_videos[i].name);
       } catch(e) {
@@ -66,13 +66,13 @@ OO.ready(function (OO){
   }
 
   // When user clicks a related or trending video change the current video.
-  $(".related_video").click( function(event) {
+  $(".related-video").click( function(event) {
       var callingContainer = event.target.id;
       var id = callingContainer.charAt(callingContainer.length - 1);
       var embedCode = related_videos[id].embed_code;
       videoPlayer.setCurrentItemEmbedCode(embedCode);
   });
-  $(".trending_video").click( function(event) {
+  $(".trending-video").click( function(event) {
        var callingContainer = event.target.id;
        var id = callingContainer.charAt(callingContainer.length - 1);
        var embedCode = trending_videos[id].embed_code;
