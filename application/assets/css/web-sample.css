@@ -14,6 +14,7 @@ body {
     margin-right: auto;
     padding: 10px;
 }
+
 /*--- Nav ---*/
 .nav {
     background-color: #2c3e50;
@@ -26,22 +27,13 @@ body {
 }
 
 .logo {
-    max-height: 28px;
+    max-height: 20px;
     width: auto;
-}
-
-#position-top {
-    position: absolute;
-}
-
-#position-fixed {
-    position: fixed;
 }
 
 .nav ul {
     display: none;
     font-size: 14px;
-    width: auto;
 }
 
 .nav > li {
@@ -52,12 +44,15 @@ body {
 }
 
 .nav li a {
-    color: #2980b9;
+    color: white;
     text-decoration: none;
 }
 
 .nav li a:hover {
-    color: #16a085;
+    background-color: #7f8c8d;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
 }
 
 .nav li > ul {
@@ -121,6 +116,16 @@ body {
 .video-container {
     margin: 0 10px;
     display: inline-block;
+}
+
+.video-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.video-container a:hover {
+    text-decoration: underline;
+    text-align: center;
 }
 
 .video {
