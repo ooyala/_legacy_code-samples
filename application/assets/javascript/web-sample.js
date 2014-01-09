@@ -22,12 +22,23 @@ OO.plugin("WebSample", function (OO, _, $, W) {
       var video_title = content.title;
       var video_description = content.description;
       $("#video-title").text(video_title);
-      $("#description").text(video_description);
+      if( video_description ) {
+        $("#description").text(video_description)
+      } else {
+        $("#description").text("There is no description");
+      }
     },
 
     onMetadataFetched: function (eventName, metadata) {
-      var metadata_as_string = JSON.stringify(metadata.base);
-      $("#metadata").text(metadata_as_string);
+      var jsonMetadata = metadata.base;
+      $(".meta").each(function() {
+        var value = jsonMetadata[this.id];
+        if( value ) {
+          $(this).text(value);
+        } else {
+          $(this).text("There is no metadata for: " + this.id);
+        }
+      });
     },
 
   });

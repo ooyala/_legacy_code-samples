@@ -46,7 +46,10 @@ the controller web_example.php
       <div class="player-description">
         <h1 id="video-title"> Title </h1>
         <p id="description"> Description </p>
-        <p id="metadata"> Metadata </p>
+        <!-- To add metadata info you just need to add the tag
+                 with a class="meta" and id="key"-->
+        <p id="releaseDate" class="meta"> </p>
+        <p id="director" class="meta"> </p>
       </div>
     </div>
 
