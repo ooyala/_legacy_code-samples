@@ -24,6 +24,8 @@ The relevant files are structured in the following way:
     /models
     /third_party (Here you have extra stuff, e.g. Ooyala SDK)
 
+As you would expect, the main logic for the examples is in the controller folder. For specific interaction with the Ooyala API you should check the ooyala.php file inside the libraries folder. Since in this example we don't use models, the models folder only has what comes with default CodeIgniter installation.
+
 ## How to get it running
 1. You need to have a server running that can interpret PHP, like Apache or Nginx.
 2. Clone this repository in your server
