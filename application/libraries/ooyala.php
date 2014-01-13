@@ -32,6 +32,7 @@ class Ooyala{
 
     /**
      * This is the test given with the Ooyala v2 php sdk.
+     * @return An array of assets that have the label 'Funny dogs'
      * @see https://github.com/ooyala/php-v2-sdk
      */
     public function test(){
@@ -45,9 +46,12 @@ class Ooyala{
     /**
      * Gets the Ooyala player token for content protection. The token is embedded in the
      * page to avoid copy-paste of the embedded player. It is generated with your
-     * API-KEY and secret.
-     * It has as an optional parameter a user id (which can be anything) for working
-     * with entitlements or device registration.
+     * API-KEY and secret. It has a fixed expiration time of 605 seconds from when
+     * it's called.
+     *
+     * @param string $embed_code an embed code to generate the signature
+     * @param string $user_id OPTIONAL a user id (which can be anything) for working
+     * with entitlements or device registration. null if none is given
      * @see http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html
      */
     public function get_embed_token($embed_code, $user_id = null){
@@ -72,6 +76,9 @@ class Ooyala{
      * The URL request looks like
      * http://api.ooyala.com/v2/cross_device_resume/accounts/account_id/viewed_assets/embed_code(identifier for the asset)/playhead_info
      *
+     * @param string $embed_code The content id to get the playhead time
+     * @param string $user_id A user id to get the playhead time. If none is given, the string
+     * 'test' is used
      * @see http://support.ooyala.com/developers/documentation/concepts/chapter_xdr.html#chapter_xdr
      */
     public function get_playhead_time($embed_code, $user_id = 'test'){
