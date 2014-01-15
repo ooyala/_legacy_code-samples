@@ -37,7 +37,7 @@ For more information about CodeIgniter installation you can check [their webpage
 ## URL structure
 CodeIgniter urls follow a structure like
  ```
-http://example.com/index.php/[controller-class]/[controller-method]/[arguments]
+http://insert_your_server_name.com/index.php/[controller-class]/[controller-method]/[arguments]
  ```
  Currently, this example has the following routes
 

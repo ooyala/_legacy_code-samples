@@ -4,7 +4,7 @@
      * and message bus handling.
      * The name of the class is the name of the general route, and each function
      * (expect __construct) is a route. So, if we wanted to see multi_feature
-     * we will go to example.com/Secure_XDR_GoogleIMA/multi_feature
+     * we will go to insert_your_server_name.com/Secure_XDR_GoogleIMA/multi_feature
      * The views are loaded as in
      * $this->load->view('file-name', $data)
      * where $data is an optional array that has useful
