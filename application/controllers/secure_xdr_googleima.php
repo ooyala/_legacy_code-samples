@@ -6,7 +6,7 @@
      * (expect __construct) is a route. So, if we wanted to see multi_feature
      * we will go to insert_your_server_name.com/Secure_XDR_GoogleIMA/multi_feature
      * The views are loaded as in
-     * $this->load->view('file-name', $data)
+     * $this->load->view('Secure_XDR_GoogleIMA/file-name', $data)
      * where $data is an optional array that has useful
      * variables for the view
      *
@@ -56,7 +56,7 @@
          */
         public function index(){
             $data['assets'] = $this->_api_wrapper->test();
-            $this->load->view('test', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/test', $data);
         }
 
         /**
@@ -77,7 +77,7 @@
             $data['embed_token_url'] = $embed_token_url;
             $playhead_time =  $this->_api_wrapper->get_playhead_time($embed_code, $user_id);
             $data['playhead_time'] = $playhead_time;
-            $this->load->view('multi-feature', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/multi-feature', $data);
         }
 
         /**
@@ -94,7 +94,7 @@
             $data['embed_token_url'] = $embed_token_url;
             $playhead_time =  $this->_api_wrapper->get_playhead_time($embed_code, $user_id);
             $data['playhead_time'] = $playhead_time;
-            $this->load->view('cross_resume', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/cross_resume', $data);
         }
 
         /**
@@ -103,7 +103,7 @@
         public function simple(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
-            $this->load->view('simple', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/simple', $data);
         }
 
         /**
@@ -112,7 +112,7 @@
         public function message_bus(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
-            $this->load->view('message-bus', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/message-bus', $data);
         }
 
         /**
@@ -122,7 +122,7 @@
         public function message_bus_advanced(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
-            $this->load->view('message-bus-advanced', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/message-bus-advanced', $data);
         }
 
         /**
@@ -135,7 +135,7 @@
             $data['embed_code'] = $embed_code;
             $embed_token_url = $this->_api_wrapper->get_embed_token($embed_code, $this->_sample_email);
             $data['embed_token_url'] = $embed_token_url;
-            $this->load->view('token', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/token', $data);
         }
 
         /**
@@ -146,7 +146,7 @@
             $embed_code = $this->_default_embed_code;
             $data['embed_code'] = $embed_code;
             $data['adTagUrl'] = $this->_google_ima_ad_tag;
-            $this->load->view('google_ima', $data);
+            $this->load->view('Secure_XDR_GoogleIMA/google_ima', $data);
         }
 
     }

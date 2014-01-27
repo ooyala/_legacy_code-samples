@@ -6,7 +6,7 @@
      * (expect __construct) is a route. So, if we wanted to see multi_feature
      * we will go to insert_your_server_name.com/Secure_XDR_GoogleIMA/multi_feature
      * The views are loaded as in
-     * $this->load->view('file-name', $data)
+     * $this->load->view('Web_example/file-name', $data)
      * where $data is an optional array that has useful
      * variables for the view
      *
@@ -62,7 +62,7 @@
             // Get tags to allow embedding video in Twitter
             $data['twitter_meta_tags'] = $this->_api_wrapper->get_twitter_card_info($data['player_id'], $data['embed_code']);
 
-            $this->load->view('web-example', $data);
+            $this->load->view('Web_example/web-example', $data);
         }
 
         /**
@@ -80,7 +80,7 @@
             $trending_videos = $this->_api_wrapper->get_trending_videos();
             $trending_videos = $trending_videos->results;
             $data['trending_videos'] = json_encode($trending_videos);
-            $this->load->view('web-example-mobile', $data);
+            $this->load->view('Web_example/web-example-mobile', $data);
         }
 
 
