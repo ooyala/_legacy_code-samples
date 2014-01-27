@@ -8,8 +8,8 @@ Check web-sample-mobile.js for resizing logic
 <html>
 <head>
  <script src="http://player.ooyala.com/v3/<?php echo $player_id; ?>"></script>
- <script src="<?php echo base_url();?>/application/assets/javascript/gaTrack.js"></script>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/application/assets/css/web-sample.css">
+ <script src="<?php echo base_url();?>/application/assets/Web_Example/javascript/gaTrack.js"></script>
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/application/assets/Web_Example/css/web-sample.css">
 </head>
 <body>
   <h1> Web example </h1>
@@ -55,7 +55,7 @@ Check web-sample-mobile.js for resizing logic
       </div>
     </div>
     <!-- First source has the logic for onClick events and such, second handles resizing -->
-    <script src="<?php echo base_url();?>/application/assets/javascript/web-sample.js"> </script>
+    <script src="<?php echo base_url();?>/application/assets/Web_Example/javascript/web-sample.js"> </script>
 
     <!-- Example of the Universal GA module. In production you would like to change this -->
     <script>

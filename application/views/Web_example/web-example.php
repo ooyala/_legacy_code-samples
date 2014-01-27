@@ -7,13 +7,13 @@ the controller web_example.php
 <html>
 <head>
  <script src="http://player.ooyala.com/v3/<?php echo $player_id; ?>"></script>
- <script src="<?php echo base_url();?>/application/assets/javascript/gaTrack.js"></script>
+ <script src="<?php echo base_url();?>/application/assets/Web_Example/javascript/gaTrack.js"></script>
  <script>
     ooyalaGaTrackSettings = {
       verboseLogging: true
     }
   </script>
- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/assets/css/web-sample.css">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>application/assets/Web_Example/css/web-sample.css">
 </head>
 
 <body>
@@ -35,7 +35,7 @@ the controller web_example.php
         </ul>
       </li>
       <li><a href="#">Options</a></li>
-      <!-- These will be shown from right to left in the nav 
+      <!-- These will be shown from right to left in the nav
                 starting from firstone to lastone -->
       <li class="right"><a href="#">Log In</a></li>
       <li class="right"><a href="#">Try it now</a></li>
@@ -121,7 +121,7 @@ the controller web_example.php
     var related_videos = <?php echo $related_videos;?>;
     var trending_videos = <?php echo $trending_videos;?>;
   </script>
-  <script src="<?php echo base_url();?>/application/assets/javascript/web-sample.js"> </script>
+  <script src="<?php echo base_url();?>/application/assets/Web_Example/javascript/web-sample.js"> </script>
 
   <!-- Library used to move the nav through the page -->
   <script type="text/javascript" src="http://prinzhorn.github.io/skrollr/dist/skrollr.min.js"></script>

@@ -13,6 +13,6 @@ OO.ready( function(OO) {
     </script>
       <div id="logName"><textarea id="textLog" style="width:640px; height:300px;">Log file:</textarea></div>
 
-    <script src="<?php echo base_url();?>/application/assets/javascript/simple_milestones.js"> </script>
+    <script src="<?php echo base_url();?>/application/assets/Secure_XDR_GoogleIMA/javascript/simple_milestones.js"> </script>
   </body>
 </html>

@@ -32,6 +32,6 @@
            });
          });
       </script>
-      <script src="<?php echo base_url();?>/application/assets/javascript/milestones_with_ads.js"></script>
+      <script src="<?php echo base_url();?>/application/assets/Secure_XDR_GoogleIMA/javascript/milestones_with_ads.js"></script>
   </body>
 </html>
