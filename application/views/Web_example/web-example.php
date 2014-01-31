@@ -83,7 +83,7 @@ the controller web_example.php
       </div>
 
       <div class="trending-video-container">
-        <h2>Treanding</h2>
+        <h2>Trending</h2>
         <div class='video-container'>
           <a href="#">
             <img id="trending-1" class="video trending-video" src=""/>
