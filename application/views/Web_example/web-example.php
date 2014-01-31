@@ -109,7 +109,6 @@ the controller web_example.php
           </a>
         </div>
       </div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
 
