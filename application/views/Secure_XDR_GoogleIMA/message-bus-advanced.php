@@ -6,7 +6,7 @@
     <script>
 OO.ready( function(OO) {
     var videoPlayer = OO.Player.create('playerContainer', '<?php echo $embed_code; ?>', { width: 640, height: 360 });
-    // Preserve the mb to acces it within simple_milestones
+    // Preserve the mb to access it within simple_milestones
     var mb = videoPlayer.mb
 });
 
