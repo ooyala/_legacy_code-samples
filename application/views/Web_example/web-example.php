@@ -18,7 +18,7 @@ the controller web_example.php
 
 <body>
   <div class="main-wrap">
-    <ul class="nav skrollable skrollable-between" data-0="position:absolute;" data-630="position:fixed;">
+    <ul class="nav scrollable scrollable-between" data-0="position:absolute;" data-630="position:fixed;">
       <li><a href="#"> <img class="logo" src="http://www.ooyala.com/careers-mx/2014/assets/images/logo.png"></img> </a></li>
       <li>
         <a href="#"> Web example </a>

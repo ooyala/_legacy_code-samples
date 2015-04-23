@@ -79,7 +79,7 @@ OO.plugin("GaTrackModule", function (OO, _, $, W) {
 
 
         // Event handlers
-        // All events recieve as first parameter the event name
+        // All events receive as first parameter the event name
 
         // Handles the PLAYER_CREATED event
         // First parameter is the event name

@@ -50,13 +50,15 @@
         public function index(){
             $data['embed_code'] = $this->_default_embed_code;
             $data['player_id'] = $this->_default_player_id;
+			
             $result = $this->_api_wrapper->get_related_videos($this->_default_embed_code);
-            $result = $result->results;
 
             // Pass related videos as json to use in the view later
             $data['related_videos'] = json_encode($result);
+			
             $trending_videos = $this->_api_wrapper->get_trending_videos();
-            $trending_videos = $trending_videos->results;
+
+            // Pass trending videos as json to use in the view later
             $data['trending_videos'] = json_encode($trending_videos);
 
             // Get tags to allow embedding video in Twitter
@@ -73,12 +75,10 @@
             $data['player_id'] = $this->_default_player_id;
             // This will be abstracted in an API
             $result = $this->_api_wrapper->get_related_videos($this->_default_embed_code);
-            $result = $result->results;
 
-            // Pass related videos as json to use in the view later
+            // Pass related and trending videos as json to use in the view later
             $data['related_videos'] = json_encode($result);
             $trending_videos = $this->_api_wrapper->get_trending_videos();
-            $trending_videos = $trending_videos->results;
             $data['trending_videos'] = json_encode($trending_videos);
             $this->load->view('Web_example/web-example-mobile', $data);
         }
